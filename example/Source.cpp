@@ -144,7 +144,7 @@ TreeNode<type>* BinaryTree<type>::Get_Root()
 {
 	return Root_;
 }
-void main()
+int main()
 {
 	BinaryTree<int> Tree;
 	ifstream pF;
@@ -197,4 +197,5 @@ void main()
 		else T = false;
 	}
 	system("pause");
+	return 0;
 }
