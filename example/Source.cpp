@@ -196,6 +196,5 @@ int main()
 		if (Y == "yes") T = true;
 		else T = false;
 	}
-	system("pause");
 	return 0;
 }
