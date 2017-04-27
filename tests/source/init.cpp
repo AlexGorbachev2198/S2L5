@@ -14,3 +14,11 @@ SCENARIO ("Add"){
 	REQUIRE(tr.Get_Root()->Left_->data_ == 4);
 	REQUIRE(tr.Get_Root()->Right_->data_ == 8);
 }
+SCENARIO ("Delete"){
+	BinaryTree<int> tr;
+	tr.add(6);
+	tr.add(4);
+	tr.add(8);
+	tr.Delete_Element(4);
+	REQUIRE(tr.Get_Root()->Left_ == nullptr);
+}
