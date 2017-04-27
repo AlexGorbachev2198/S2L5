@@ -3,5 +3,5 @@
 
 SCENARIO ("constructor"){
 	BinarySearchTree<int> BST;
-	REQUIRE(BST.root() == nullptr);
+	REQUIRE(BST.Get_Root() == nullptr);
 }
