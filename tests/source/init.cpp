@@ -2,6 +2,6 @@
 #include <catch.hpp>
 
 SCENARIO ("constructor"){
-	BinarySearchTree<int> BST;
+	BinaryTree<int> BST;
 	REQUIRE(BST.Get_Root() == nullptr);
 }
