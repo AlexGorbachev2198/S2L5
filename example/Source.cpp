@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string>
 using namespace std;
-
 template <typename type>
 struct TreeNode
 {
@@ -13,9 +12,8 @@ struct TreeNode
 public:
 	TreeNode(type D);
 	TreeNode();
+	~TreeNode();
 };
-
-
 template <typename type>
 class BinaryTree
 {
@@ -23,7 +21,8 @@ class BinaryTree
 	TreeNode<type> *Root_;
 public:
 	BinaryTree<type>();
-	void add(type Data);
+	~BinaryTree<type>();
+    void add(type Data);
 	void Rec_Search(type Data, TreeNode<type> *& Head, TreeNode<type> *& Head_Parent);
 	void Tree_Print(TreeNode<type>* buff, unsigned int lvl);
 	TreeNode<type>* Get_Root();
@@ -144,9 +143,19 @@ TreeNode<type>* BinaryTree<type>::Get_Root()
 {
 	return Root_;
 }
-int main()
+template <typename type>
+TreeNode<type>::~TreeNode()
 {
-	BinaryTree<int> Tree;
+	delete data_;
+	Left_ = Right_ = Parent_ = nullptr;
+}
+template <typename type>
+BinaryTree<type>::~BinaryTree()
+{
+	Root_ = nullptr;
+}
+int main()
+{BinaryTree<int> Tree;
 	ifstream pF;
 	pF.open("Tree.txt");
 	unsigned int n;
@@ -155,8 +164,15 @@ int main()
 		for (unsigned int i = 0; i < n; ++i)
 		{
 			int buffer = 0;
-			pF >> buffer;
-			Tree.add(buffer);
+		    pF >> buffer;
+			try {
+				Tree.add(buffer);
+			}
+			catch (invalid_argument)
+			{
+				cout << "error" << endl;
+				return 0;
+			}
 		}
 	}
 	else cout << "Error, file is not open" << endl;
@@ -196,5 +212,5 @@ int main()
 		if (Y == "yes") T = true;
 		else T = false;
 	}
-	return 0;
+	system("pause");
 }
